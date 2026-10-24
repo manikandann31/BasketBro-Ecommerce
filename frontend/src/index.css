@@ -1,0 +1,380 @@
+/* =========================================
+   GLOBAL DESIGN SYSTEM
+========================================= */
+
+:root {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color-scheme: dark;
+
+  --color-bg: #0b1120;
+  --color-surface: #111a2e;
+  --color-surface-raised: #18243a;
+  --color-input: #0b1120;
+
+  --color-text: #f1f5f9;
+  --color-text-muted: #a6b3c8;
+
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+
+  --color-border: #2b3a52;
+  --color-danger: #ef4444;
+  --color-success: #22c55e;
+
+  --color-navbar: #080e1b;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  --shadow-card: 0 8px 28px rgba(0, 0, 0, 0.2);
+  --transition: 180ms ease;
+}
+
+/* =========================================
+   LIGHT THEME
+========================================= */
+
+body.light-mode {
+  color-scheme: light;
+
+  --color-bg: #f4f7fb;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f8fafc;
+  --color-input: #ffffff;
+
+  --color-text: #172033;
+  --color-text-muted: #64748b;
+
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+
+  --color-border: #dbe3ee;
+  --color-navbar: #111827;
+
+  --shadow-card: 0 8px 28px rgba(15, 23, 42, 0.07);
+}
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-bottom: 1.25rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   APPLICATION LAYOUT
+========================================= */
+
+.main-content {
+  width: min(1200px, 92%);
+  min-height: calc(100vh - 90px);
+  margin: 0 auto;
+  padding: 36px 0 60px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: var(--color-navbar);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.navbar-container {
+  width: min(1400px, 92%);
+  min-height: 76px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.navbar-logo {
+  color: #ffffff;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+.navbar-logo:hover {
+  color: #bfdbfe;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px, 2vw, 28px);
+}
+
+.navbar-links a {
+  color: #e5e7eb;
+  font-size: 0.98rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.navbar-links a:hover {
+  color: #93c5fd;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+
+  font-size: 1.25rem;
+
+  transition:
+    background-color var(--transition),
+    transform var(--transition);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: rotate(8deg);
+}
+
+/* =========================================
+   SHARED BUTTONS
+========================================= */
+
+button,
+.button {
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+button:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+/* =========================================
+   SHARED FORM CONTROLS
+========================================= */
+
+input,
+select,
+textarea {
+  max-width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-input);
+  color: var(--color-text);
+
+  padding: 11px 13px;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.8;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.14);
+}
+
+textarea {
+  resize: vertical;
+}
+
+label {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* =========================================
+   SHARED SURFACES
+========================================= */
+
+.card,
+.checkout-section,
+.checkout-summary {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.form-error {
+  margin-top: 5px;
+  color: #f87171;
+  font-size: 0.9rem;
+}
+
+body.light-mode .form-error {
+  color: #b91c1c;
+}
+
+/* =========================================
+   RESPONSIVE NAVIGATION
+========================================= */
+
+@media (max-width: 700px) {
+  .navbar-container {
+    min-height: auto;
+    padding: 14px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .navbar-links {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+
+  .navbar-links a {
+    font-size: 0.9rem;
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .main-content {
+    width: 92%;
+    padding-top: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
