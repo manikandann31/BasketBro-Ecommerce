@@ -1,7 +1,5 @@
 package com.ecommerce.api.config;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -13,9 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.ecommerce.api.security.JwtAuthenticationFilter;
 
@@ -36,45 +31,62 @@ public class SecurityConfig {
 	}
 
 	@Bean
-	public CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration();
-
-		configuration.setAllowedOrigins(List.of(
-				"https://basketbro-ecommerce-8hfwzl3ht-nick-s-group.vercel.app"));
-
-		configuration.setAllowedMethods(
-				List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-
-		configuration.setAllowedHeaders(List.of("*"));
-		configuration.setAllowCredentials(true);
-
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-
-		source.registerCorsConfiguration("/**", configuration);
-
-		return source;
-	}
-
-	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http)
 			throws Exception {
 
 		log.info("DIAGNOSTIC: Custom SecurityConfig is being initialized");
 
 		http
+				// Enable CORS using CorsConfig.java
 				.cors(cors -> {
 				})
+
+				// Disable CSRF for REST API
 				.csrf(csrf -> csrf.disable())
+
+				// Use stateless JWT authentication
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
+				// Authorization rules
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
-						.requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
-						.requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
+
+						// Allow admin login without authentication
+						.requestMatchers(
+								HttpMethod.POST, "/api/auth/login")
+						.permitAll()
+
+						// Allow public access to products
+						.requestMatchers(
+								HttpMethod.GET, "/api/products/**")
+						.permitAll()
+
+						// Allow public access to categories
+						.requestMatchers(
+								HttpMethod.GET, "/api/categories/**")
+						.permitAll()
+
+						// Allow access to product images
 						.requestMatchers("/images/**").permitAll()
-						.requestMatchers(HttpMethod.POST, "/api/products").hasRole("ADMIN")
-						.requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN")
-						.requestMatchers(HttpMethod.DELETE, "/api/products/**").hasRole("ADMIN")
+
+						// Only ADMIN can create products
+						.requestMatchers(
+								HttpMethod.POST, "/api/products")
+						.hasRole("ADMIN")
+
+						// Only ADMIN can update products
+						.requestMatchers(
+								HttpMethod.PUT, "/api/products/**")
+						.hasRole("ADMIN")
+
+						// Only ADMIN can delete products
+						.requestMatchers(
+								HttpMethod.DELETE, "/api/products/**")
+						.hasRole("ADMIN")
+
+						// All other requests require authentication
 						.anyRequest().authenticated())
+
+				// Add JWT authentication filter
 				.addFilterBefore(
 						jwtAuthenticationFilter,
 						UsernamePasswordAuthenticationFilter.class);
