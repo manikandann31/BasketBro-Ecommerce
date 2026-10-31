@@ -19,7 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ecommerce.api.entity.Product;
 import com.ecommerce.api.service.ProductService;
-
+import java.io.IOException;
+import java.util.List;
+import org.springframework.http.MediaType;
+import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -116,15 +119,14 @@ public class ProductController {
                 pageable);
     }
 
-    // UPDATE PRODUCT IMAGE
-    @PutMapping(
-            value = "/{id}/image",
+ // UPLOAD MULTIPLE PRODUCT IMAGES
+    @PostMapping(
+            value = "/{id}/images",
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Product updateProductImage(
+    public Product uploadProductImages(
             @PathVariable Integer id,
-            @RequestParam("file") MultipartFile file)
+            @RequestParam("files") List<MultipartFile> files)
             throws IOException {
 
-        return productService.updateProductImage(id, file);
-    }
-}
+        return productService.uploadProductImages(id, files);
+    }}

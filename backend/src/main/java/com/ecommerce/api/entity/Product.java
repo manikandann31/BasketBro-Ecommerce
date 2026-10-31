@@ -1,5 +1,8 @@
 package com.ecommerce.api.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,6 +30,13 @@ public class Product {
     private int quantity;
 
     private String image;
+
+    @OneToMany(
+        mappedBy = "product",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<ProductImage> images = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
