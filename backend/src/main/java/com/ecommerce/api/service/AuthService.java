@@ -41,7 +41,7 @@ public class AuthService {
         }
 
         return jwtService.generateToken(
-                admin.getUsername()
+                admin.getUsername(), "ADMIN"
         );
     }
 }
