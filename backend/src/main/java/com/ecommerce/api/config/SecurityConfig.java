@@ -38,63 +38,38 @@ public class SecurityConfig {
         log.info("Custom SecurityConfig is being initialized");
 
         http
-            // Enable CORS
             .cors(cors -> {})
-
-            // Disable CSRF for REST API
             .csrf(csrf -> csrf.disable())
-
-            // Stateless JWT authentication
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
-
-            // Authorization rules
             .authorizeHttpRequests(auth -> auth
 
-                // Admin login
-                .requestMatchers(
-                    HttpMethod.POST, "/api/auth/login"
+                // Admin and customer authentication endpoints
+                .requestMatchers(HttpMethod.POST,
+                        "/api/auth/login",
+                        "/api/customer/auth/register",
+                        "/api/customer/auth/login"
                 ).permitAll()
 
-                // Public product access
-                .requestMatchers(
-                    HttpMethod.GET, "/api/products/**"
-                ).permitAll()
-
-                // Public category access
-                .requestMatchers(
-                    HttpMethod.GET, "/api/categories/**"
-                ).permitAll()
-
-                // Public image access
+                // Public catalog browsing
+                .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
                 .requestMatchers("/images/**").permitAll()
 
-                // Only ADMIN can upload multiple product images
-                .requestMatchers(
-                    HttpMethod.POST, "/api/products/*/images"
-                ).hasRole("ADMIN")
+                // Admin-only catalog management
+                .requestMatchers(HttpMethod.POST, "/api/products/*/images").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/products").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasRole("ADMIN")
+                .requestMatchers("/api/admin/**").hasRole("ADMIN")
 
-                // Only ADMIN can create products
-                .requestMatchers(
-                    HttpMethod.POST, "/api/products"
-                ).hasRole("ADMIN")
+                // Customer-owned support endpoints
+                .requestMatchers("/api/support/**").hasRole("CUSTOMER")
 
-                // Only ADMIN can update products
-                .requestMatchers(
-                    HttpMethod.PUT, "/api/products/**"
-                ).hasRole("ADMIN")
-
-                // Only ADMIN can delete products
-                .requestMatchers(
-                    HttpMethod.DELETE, "/api/products/**"
-                ).hasRole("ADMIN")
-
-                // All remaining requests require authentication
+                // Everything else requires a valid authenticated token
                 .anyRequest().authenticated()
             )
-
-            // Add JWT filter
             .addFilterBefore(
                 jwtAuthenticationFilter,
                 UsernamePasswordAuthenticationFilter.class
