@@ -30,10 +30,14 @@ public class JwtService {
     }
 
     public String generateToken(String username) {
+        return generateToken(username, "ADMIN");
+    }
+
+    public String generateToken(String username, String role) {
 
         return Jwts.builder()
                 .subject(username)
-                .claim("role", "ADMIN")
+                .claim("role", role)
                 .issuedAt(new Date())
                 .expiration(
                     new Date(
