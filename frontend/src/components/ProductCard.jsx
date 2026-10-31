@@ -3,11 +3,17 @@ import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 function ProductCard({ product }) {
+
     const { addToCart } = useCart();
     const [message, setMessage] = useState("");
 
+    // Backend API base URL
+    const API_BASE_URL =
+        import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/api";
+
+    // Construct product image URL
     const imageUrl = product.image
-        ? `http://localhost:8080/images/${product.image}`
+        ? `${API_BASE_URL.replace(/\/api\/?$/, "")}/images/${product.image}`
         : "/product-placeholder.svg";
 
     const handleAddToCart = () => {
@@ -23,6 +29,7 @@ function ProductCard({ product }) {
 
     return (
         <div className="product-card">
+
             <div className="product-image">
                 <img
                     src={imageUrl}
@@ -35,6 +42,7 @@ function ProductCard({ product }) {
             </div>
 
             <div className="product-info">
+
                 <h3>{product.name}</h3>
 
                 <p>{product.brand}</p>
@@ -70,6 +78,7 @@ function ProductCard({ product }) {
                         {message}
                     </p>
                 )}
+
             </div>
         </div>
     );

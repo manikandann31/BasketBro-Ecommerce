@@ -43,7 +43,10 @@ function Cart() {
                                 <img
                                     src={
                                         item.image
-                                            ? `http://localhost:8080/images/${item.image}`
+                                            ? `${(
+                                                import.meta.env.VITE_API_BASE_URL ||
+                                                "http://localhost:8080/api"
+                                            ).replace(/\/api\/?$/, "")}/images/${item.image}`
                                             : "/product-placeholder.svg"
                                     }
                                     alt={item.name}
