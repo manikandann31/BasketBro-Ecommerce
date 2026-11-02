@@ -53,7 +53,6 @@ function Navbar() {
                     <Link to="/">Products</Link>
                     <Link to="/cart" aria-label={`Shopping cart, ${cartCount} items`}>🛒 Cart ({cartCount})</Link>
                     <Link to={isSignedIn ? "/support" : "/customer/login"}>Customer Support</Link>
-                    <Link to="/admin/login">Admin Login</Link>
                     {isSignedIn && (
                         <div className="navbar-profile">
                             <button type="button" className="profile-avatar" aria-label="Open customer profile"
