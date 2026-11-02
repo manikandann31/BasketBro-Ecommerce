@@ -15,7 +15,7 @@ export default function MyOrders() {
         api.get("/orders/mine").then(({ data }) => {
             if (active) setOrders(data);
         }).catch(err => {
-            if (active) setError(err.response?.data?.message || "Unable to load your orders.");
+            if (active) setError(err.response?.data?.message || err.response?.data?.detail || "Unable to load your orders.");
         }).finally(() => { if (active) setLoading(false); });
         return () => { active = false; };
     }, []);
