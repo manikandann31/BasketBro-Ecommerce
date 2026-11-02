@@ -15,12 +15,16 @@ public class CorsConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
+        // Stable production frontend and local development.
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:5173",
-                "https://basketbro-ecommerce-8hfwzl3ht-nick-s-group.vercel.app",
-                "https://basketbro-ecommerce-19gosddwa-nick-s-group.vercel.app",
-                "https://basketbro-ecommerce.vercel.app",
-                "https://basketbro-ecommerce-cflrphest-nick-s-group.vercel.app"
+                "https://basketbro-ecommerce.vercel.app"
+        ));
+
+        // Allow Vercel preview deployments for this project without
+        // having to add every newly generated deployment URL manually.
+        configuration.setAllowedOriginPatterns(List.of(
+                "https://basketbro-ecommerce-*-nick-s-group.vercel.app"
         ));
 
         configuration.setAllowedMethods(List.of(
