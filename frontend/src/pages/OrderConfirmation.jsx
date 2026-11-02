@@ -22,7 +22,7 @@ function OrderConfirmation() {
                 items:data.items.map(item=>({productId:item.productId,name:item.name,price:item.price,quantity:item.quantity,subtotal:item.subtotal})),
                 total:data.total
             });
-        }).catch(err => { if(active) setError(err.response?.data?.message || "Unable to load this order."); })
+        }).catch(err => { if(active) setError(err.response?.data?.message || err.response?.data?.detail || "Unable to load this order."); })
           .finally(()=>{if(active)setLoading(false);});
         return ()=>{active=false;};
     }, [orderId, location.state]);
