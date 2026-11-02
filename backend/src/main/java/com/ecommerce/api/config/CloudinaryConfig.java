@@ -10,6 +10,13 @@ public class CloudinaryConfig {
 
     @Bean
     public Cloudinary cloudinary() {
-        return new Cloudinary(System.getenv("CLOUDINARY_URL"));
+        String cloudinaryUrl = System.getenv("CLOUDINARY_URL");
+
+        if (cloudinaryUrl == null || cloudinaryUrl.isBlank()) {
+            throw new IllegalStateException(
+                    "CLOUDINARY_URL is not configured. Set it in the backend environment before starting the application.");
+        }
+
+        return new Cloudinary(cloudinaryUrl);
     }
 }

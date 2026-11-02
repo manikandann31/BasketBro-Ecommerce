@@ -1,10 +1,16 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import { adminLogin } from "../services/authService";
 
 function AdminLogin() {
     const navigate = useNavigate();
+    const entryAllowed = sessionStorage.getItem("basketbroAdminEntry") === "allowed";
+
+    if (!entryAllowed) {
+        return <Navigate to="/" replace />;
+    }
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -20,12 +26,9 @@ function AdminLogin() {
         try {
             const response = await adminLogin(username, password);
 
-            localStorage.setItem(
-                "adminToken",
-                response.data.token
-            );
-
-            navigate("/admin");
+            sessionStorage.setItem("adminToken", response.data.token);
+            sessionStorage.removeItem("basketbroAdminEntry");
+            navigate("/admin", { replace: true });
         } catch (error) {
             if (error.response?.status === 401) {
                 setError("Invalid username or password.");

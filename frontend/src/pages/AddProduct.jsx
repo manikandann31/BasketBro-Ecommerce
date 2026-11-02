@@ -3,111 +3,63 @@ import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import { getCategories } from "../services/categoryService";
 
+const MAX_IMAGES = 10;
+const MAX_SIZE = 5 * 1024 * 1024;
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+
 function AddProduct() {
     const navigate = useNavigate();
-
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-
-    const [imageFile, setImageFile] = useState(null);
-    const [imagePreview, setImagePreview] = useState("");
-
+    const [imageFiles, setImageFiles] = useState([]);
     const [product, setProduct] = useState({
-        name: "",
-        brand: "",
-        price: "",
-        rating: "",
-        quantity: "",
-        categoryId: ""
+        name: "", brand: "", price: "", rating: "", quantity: "", categoryId: ""
     });
 
     useEffect(() => {
-        loadCategories();
+        getCategories()
+            .then(response => setCategories(response.data))
+            .catch(() => setError("Failed to load categories."));
     }, []);
 
-    useEffect(() => {
-        if (!imageFile) {
-            setImagePreview("");
-            return;
-        }
-
-        const previewUrl = URL.createObjectURL(imageFile);
-        setImagePreview(previewUrl);
-
-        return () => URL.revokeObjectURL(previewUrl);
-    }, [imageFile]);
-
-    const loadCategories = async () => {
-        try {
-            const response = await getCategories();
-            setCategories(response.data);
-        } catch (err) {
-            setError("Failed to load categories.");
-        }
+    const handleChange = e => {
+        setProduct(previous => ({ ...previous, [e.target.name]: e.target.value }));
     };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-
-        setProduct((previous) => ({
-            ...previous,
-            [name]: value
-        }));
-    };
-
-    const handleImageChange = (e) => {
-        const file = e.target.files?.[0] ?? null;
-
+    const handleImagesChange = e => {
+        const files = Array.from(e.target.files || []);
         setError("");
 
-        if (!file) {
-            setImageFile(null);
-            return;
-        }
-
-        const allowedTypes = [
-            "image/jpeg",
-            "image/png",
-            "image/webp",
-            "image/gif"
-        ];
-
-        if (!allowedTypes.includes(file.type)) {
-            setError("Please select a JPG, PNG, WEBP, or GIF image.");
+        if (files.length > MAX_IMAGES) {
+            setError("You can upload a maximum of 10 images.");
             e.target.value = "";
-            setImageFile(null);
             return;
         }
-
-        setImageFile(file);
+        const invalid = files.find(file =>
+            !ALLOWED_TYPES.includes(file.type) || file.size > MAX_SIZE
+        );
+        if (invalid) {
+            setError("Images must be JPG, PNG, WEBP or GIF and each must be 5 MB or smaller.");
+            e.target.value = "";
+            return;
+        }
+        setImageFiles(files);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
         setError("");
 
-        if (
-            !product.name.trim() ||
-            !product.price ||
-            product.quantity === "" ||
-            !product.categoryId
-        ) {
+        if (!product.name.trim() || !product.price || product.quantity === "" || !product.categoryId) {
             setError("Please fill in all required fields.");
             return;
         }
-
         if (Number(product.price) <= 0 || Number(product.quantity) < 0) {
-            setError(
-                "Price must be positive and quantity cannot be negative."
-            );
+            setError("Price must be positive and quantity cannot be negative.");
             return;
         }
-
-        if (
-            product.rating !== "" &&
-            (Number(product.rating) < 0 || Number(product.rating) > 5)
-        ) {
+        if (product.rating !== "" && (Number(product.rating) < 0 || Number(product.rating) > 5)) {
             setError("Rating must be between 0 and 5.");
             return;
         }
@@ -119,55 +71,30 @@ function AddProduct() {
             rating: product.rating === "" ? 0 : Number(product.rating),
             quantity: Number(product.quantity),
             image: "",
-            category: {
-                id: Number(product.categoryId)
-            }
+            category: { id: Number(product.categoryId) }
         };
 
         try {
             setLoading(true);
-
-            // Step 1: Create the product.
             const response = await api.post("/products", payload);
-
             const createdProduct = response.data;
 
-            // Step 2: Upload the image if one was selected.
-            if (imageFile) {
+            if (imageFiles.length) {
                 if (!createdProduct?.id) {
-                    throw new Error(
-                        "Product was created, but its ID was not returned. " +
-                        "Please check the product before trying again."
-                    );
+                    throw new Error("Product was created but its ID was not returned. Check the product before retrying.");
                 }
-
                 const formData = new FormData();
-                formData.append("file", imageFile);
-
-                await api.put(
-                    `/products/${createdProduct.id}/image`,
-                    formData
-                );
+                imageFiles.forEach(file => formData.append("files", file));
+                await api.post(`/products/${createdProduct.id}/images`, formData);
             }
 
-            alert(
-                imageFile
-                    ? "Product and image added successfully!"
-                    : "Product added successfully!"
-            );
-
+            alert("Product added successfully!");
             navigate("/admin/products");
         } catch (err) {
             console.error("Add product error:", err);
-
-            setError(
-                err.response?.data?.message ||
-                (typeof err.response?.data === "string"
-                    ? err.response.data
-                    : null) ||
-                err.message ||
-                "Failed to add product. Please check the backend."
-            );
+            setError(err.response?.data?.message ||
+                (typeof err.response?.data === "string" ? err.response.data : null) ||
+                err.message || "Failed to add product. Please check the backend.");
         } finally {
             setLoading(false);
         }
@@ -176,132 +103,46 @@ function AddProduct() {
     return (
         <div className="admin-form-container">
             <h1>Add New Product</h1>
-
             {error && <p className="form-error">{error}</p>}
-
             <form onSubmit={handleSubmit} className="admin-product-form">
-                <label>
-                    Product Name *
-                    <input
-                        type="text"
-                        name="name"
-                        value={product.name}
-                        onChange={handleChange}
-                        required
-                    />
+                <label>Product Name *
+                    <input type="text" name="name" value={product.name} onChange={handleChange} required />
                 </label>
-
-                <label>
-                    Brand
-                    <input
-                        type="text"
-                        name="brand"
-                        value={product.brand}
-                        onChange={handleChange}
-                    />
+                <label>Brand
+                    <input type="text" name="brand" value={product.brand} onChange={handleChange} />
                 </label>
-
-                <label>
-                    Price (₹) *
-                    <input
-                        type="number"
-                        name="price"
-                        value={product.price}
-                        onChange={handleChange}
-                        min="0.01"
-                        step="0.01"
-                        required
-                    />
+                <label>Price (₹) *
+                    <input type="number" name="price" value={product.price} onChange={handleChange} min="0.01" step="0.01" required />
                 </label>
-
-                <label>
-                    Rating (0–5)
-                    <input
-                        type="number"
-                        name="rating"
-                        value={product.rating}
-                        onChange={handleChange}
-                        min="0"
-                        max="5"
-                        step="0.1"
-                    />
+                <label>Rating (0–5)
+                    <input type="number" name="rating" value={product.rating} onChange={handleChange} min="0" max="5" step="0.1" />
                 </label>
-
-                <label>
-                    Quantity *
-                    <input
-                        type="number"
-                        name="quantity"
-                        value={product.quantity}
-                        onChange={handleChange}
-                        min="0"
-                        step="1"
-                        required
-                    />
+                <label>Quantity *
+                    <input type="number" name="quantity" value={product.quantity} onChange={handleChange} min="0" step="1" required />
                 </label>
-
-                <label>
-                    Product Image
-                    <input
-                        type="file"
-                        accept="image/jpeg,image/png,image/webp,image/gif"
-                        onChange={handleImageChange}
-                    />
+                <label>Product Images (up to 10; max 5 MB each)
+                    <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple onChange={handleImagesChange} />
                 </label>
-
-                {imagePreview && (
+                {imageFiles.length > 0 && (
                     <div className="image-preview">
-                        <p>Image Preview</p>
-                        <img
-                            src={imagePreview}
-                            alt="Selected product preview"
-                            style={{
-                                width: "180px",
-                                height: "180px",
-                                objectFit: "contain",
-                                border: "1px solid #ddd",
-                                borderRadius: "8px",
-                                padding: "8px"
-                            }}
-                        />
+                        <p>{imageFiles.length} image(s) selected</p>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+                            {imageFiles.map((file, index) => (
+                                <img key={index} src={URL.createObjectURL(file)} alt={file.name}
+                                    style={{ width: 90, height: 90, objectFit: "contain", border: "1px solid #ddd", borderRadius: 8 }} />
+                            ))}
+                        </div>
                     </div>
                 )}
-
-                <label>
-                    Category *
-                    <select
-                        name="categoryId"
-                        value={product.categoryId}
-                        onChange={handleChange}
-                        required
-                    >
+                <label>Category *
+                    <select name="categoryId" value={product.categoryId} onChange={handleChange} required>
                         <option value="">Select a category</option>
-
-                        {categories.map((category) => (
-                            <option
-                                key={category.id}
-                                value={category.id}
-                            >
-                                {category.name}
-                            </option>
-                        ))}
+                        {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                     </select>
                 </label>
-
                 <div className="form-buttons">
-                    <button type="submit" disabled={loading}>
-                        {loading
-                            ? "Adding Product..."
-                            : "Add Product"}
-                    </button>
-
-                    <button
-                        type="button"
-                        disabled={loading}
-                        onClick={() => navigate("/admin/products")}
-                    >
-                        Cancel
-                    </button>
+                    <button type="submit" disabled={loading}>{loading ? "Adding Product..." : "Add Product"}</button>
+                    <button type="button" disabled={loading} onClick={() => navigate("/admin/products")}>Cancel</button>
                 </div>
             </form>
         </div>
