@@ -12,7 +12,7 @@ api.interceptors.request.use(
         const isAdminRequest = requestPath.includes("/admin/");
         const isCustomerRequest = requestPath.startsWith("/support/") || requestPath.startsWith("/orders");
         const token = isAdminRequest
-            ? localStorage.getItem("adminToken")
+            ? sessionStorage.getItem("adminToken")
             : isCustomerRequest
                 ? localStorage.getItem("customerToken")
                 : null;
