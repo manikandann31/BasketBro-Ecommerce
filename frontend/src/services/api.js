@@ -10,9 +10,10 @@ api.interceptors.request.use(
     (config) => {
         const requestPath = config.url || "";
         const isAdminRequest = requestPath.includes("/admin/");
+        const isCustomerRequest = requestPath.startsWith("/support/") || requestPath.startsWith("/orders");
         const token = isAdminRequest
             ? localStorage.getItem("adminToken")
-            : requestPath.startsWith("/support/")
+            : isCustomerRequest
                 ? localStorage.getItem("customerToken")
                 : null;
 
