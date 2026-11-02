@@ -47,7 +47,8 @@ public class CustomerAuthService {
         return new AuthResponse(
                 "Customer registered successfully",
                 jwtService.generateToken(email, "CUSTOMER"),
-                "CUSTOMER", customer.getFullName());
+                "CUSTOMER",
+                customer.getFullName());
     }
 
     public AuthResponse login(CustomerLoginRequest request) {
@@ -65,6 +66,7 @@ public class CustomerAuthService {
         return new AuthResponse(
                 "Customer login successful",
                 jwtService.generateToken(email, "CUSTOMER"),
-                "CUSTOMER");
+                "CUSTOMER",
+                customer.getFullName());
     }
 }
