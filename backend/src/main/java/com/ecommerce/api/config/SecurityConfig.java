@@ -44,20 +44,27 @@ public class SecurityConfig {
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
             .authorizeHttpRequests(auth -> auth
-
-                // Admin and customer authentication endpoints
+                // Public authentication endpoints
                 .requestMatchers(HttpMethod.POST,
                         "/api/auth/login",
                         "/api/customer/auth/register",
                         "/api/customer/auth/login"
                 ).permitAll()
 
-                // Public catalog browsing
+                // Public catalog reads and product images
                 .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
                 .requestMatchers("/images/**").permitAll()
 
-                // Admin-only catalog management
+                // Category changes are restricted to administrators
+                .requestMatchers(HttpMethod.POST,
+                        "/api/categories", "/api/categories/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT,
+                        "/api/categories", "/api/categories/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE,
+                        "/api/categories", "/api/categories/**").hasRole("ADMIN")
+
+                // Admin-only product management
                 .requestMatchers(HttpMethod.POST, "/api/products/*/images").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/api/products").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN")
@@ -67,7 +74,7 @@ public class SecurityConfig {
                 // Customer-owned support endpoints
                 .requestMatchers("/api/support/**").hasRole("CUSTOMER")
 
-                // Everything else requires a valid authenticated token
+                // All remaining endpoints require authentication
                 .anyRequest().authenticated()
             )
             .addFilterBefore(
