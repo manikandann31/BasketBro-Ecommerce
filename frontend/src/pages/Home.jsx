@@ -104,6 +104,7 @@ function Home() {
                             <Link className="welcome-primary" to="/customer/login?mode=login&returnTo=%2F">Sign in</Link>
                             <Link className="welcome-secondary" to="/customer/login?mode=register&returnTo=%2F">Create a new account</Link>
                             <button className="welcome-guest" type="button" onClick={continueAsGuest}>Continue without profile</button>
+                            <Link className="welcome-admin-entry" to="/admin/login" onClick={() => sessionStorage.setItem("basketbroAdminEntry", "allowed")}>Admin Login</Link>
                         </div>
                         <small>You can browse products as a guest. An account may be required for account-based features.</small>
                     </div>
