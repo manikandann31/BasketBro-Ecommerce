@@ -30,7 +30,10 @@ export default function CustomerAuth() {
       const { data } = await api.post(endpoint, payload);
       localStorage.setItem("customerToken", data.token);
       localStorage.setItem("customerRole", data.role);
+      localStorage.setItem("customerName", mode === "register" ? form.fullName.trim() : form.email.trim().split("@")[0]);
+      localStorage.setItem("customerEmail", form.email.trim().toLowerCase());
       sessionStorage.removeItem("basketbroGuest");
+      window.dispatchEvent(new Event("basketbro-auth-changed"));
       navigate(returnTo, { replace: true });
     } catch (err) {
       setError(err.response?.data?.message || "Unable to authenticate. Check your details and try again.");
