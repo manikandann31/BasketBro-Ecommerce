@@ -1871,3 +1871,29 @@ body.dark-mode .brand-eyebrow {
 .receipt-download-button:hover { background: var(--color-primary-hover); }
 .continue-shopping-link { display: inline-block; margin: 4px 0 24px; }
 @media (max-width: 760px) { .payment-layout { grid-template-columns: 1fr; } .payment-methods, .order-receipt-card { padding: 19px; } .order-receipt-heading, .order-product-row { align-items: flex-start; } }
+
+
+/* Customer order history */
+.my-orders-page { padding: 30px 0 56px; }
+.my-orders-header { display:flex; justify-content:space-between; align-items:center; gap:20px; margin-bottom:26px; }
+.my-orders-header h1 { margin:7px 0; }
+.my-orders-header p:not(.checkout-step-label) { color:var(--color-text-muted); }
+.my-orders-list { display:grid; gap:18px; }
+.my-order-card { padding:22px; border:1px solid var(--color-border); border-radius:15px; background:var(--color-surface); box-shadow:var(--shadow-card); }
+.my-order-heading,.my-order-footer,.my-order-items > div { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.my-order-heading > div { display:grid; gap:5px; }
+.my-order-heading > div span,.my-order-footer > div span { color:var(--color-text-muted); font-size:.78rem; }
+.my-order-heading > div strong { overflow-wrap:anywhere; }
+.my-order-items { margin:16px 0; padding:12px 0; border-top:1px solid var(--color-border); border-bottom:1px solid var(--color-border); }
+.my-order-items > div { padding:7px 0; color:var(--color-text); }
+.my-order-footer > div { display:grid; gap:6px; }
+.my-order-footer > div strong { font-size:1.1rem; }
+.my-orders-empty { padding:48px 20px; text-align:center; border:1px dashed var(--color-border); border-radius:14px; background:var(--color-surface); }
+.my-orders-empty p,.my-orders-note { color:var(--color-text-muted); }
+.my-orders-empty .primary-button { display:inline-flex; margin-top:12px; text-decoration:none; }
+.my-orders-note { margin-top:20px; font-size:.82rem; }
+@media(max-width:650px) {
+ .my-orders-header,.my-order-footer { align-items:flex-start; flex-direction:column; }
+ .my-order-card { padding:17px; }
+ .my-order-items > div { align-items:flex-start; }
+}
