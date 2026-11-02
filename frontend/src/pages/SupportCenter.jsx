@@ -41,6 +41,9 @@ export default function SupportCenter() {
   const logout = () => {
     localStorage.removeItem("customerToken");
     localStorage.removeItem("customerRole");
+    localStorage.removeItem("customerName");
+    localStorage.removeItem("customerEmail");
+    window.dispatchEvent(new Event("basketbro-auth-changed"));
     navigate("/customer/login");
   };
 
