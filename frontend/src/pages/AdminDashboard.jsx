@@ -72,8 +72,6 @@ function AdminDashboard() {
                         <span aria-hidden="true"> →</span>
                     </button>
                 </article>
-            </div>
-
                 <article className="admin-dashboard-card">
                     <div className="admin-dashboard-card-icon">🧾</div>
                     <h2>Manage Orders</h2>
