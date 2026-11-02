@@ -18,7 +18,9 @@ public class CorsConfig {
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:5173",
                 "https://basketbro-ecommerce-8hfwzl3ht-nick-s-group.vercel.app",
-                "https://basketbro-ecommerce-19gosddwa-nick-s-group.vercel.app"
+                "https://basketbro-ecommerce-19gosddwa-nick-s-group.vercel.app",
+                "https://basketbro-ecommerce.vercel.app",
+                "https://basketbro-ecommerce-cflrphest-nick-s-group.vercel.app"
         ));
 
         configuration.setAllowedMethods(List.of(
