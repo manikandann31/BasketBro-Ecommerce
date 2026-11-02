@@ -52,7 +52,15 @@ function Home() {
                 const response = searchKeyword.trim() === "" && selectedCategory === ""
                     ? await getProductsPaged(currentPage, pageSize, sort)
                     : await searchProducts(searchKeyword, selectedCategory, currentPage, pageSize, sort);
-                setProducts(Array.isArray(response.data?.content) ? response.data.content : []);
+                const pageProducts = Array.isArray(response.data?.content) ? [...response.data.content] : [];
+                // Shuffle the default recommendation order once after each page fetch.
+                if (sort === "id,asc") {
+                    for (let i = pageProducts.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [pageProducts[i], pageProducts[j]] = [pageProducts[j], pageProducts[i]];
+                    }
+                }
+                setProducts(pageProducts);
                 setTotalPages(response.data?.totalPages ?? 0);
             } catch (err) {
                 console.error("Failed to load products:", err);
@@ -147,7 +155,7 @@ function Home() {
                     <div className="sort-control">
                         <label htmlFor="sort">Sort By:</label>
                         <select id="sort" value={sort} onChange={handleSortChange}>
-                            <option value="id,asc">Default</option>
+                            <option value="id,asc">Recommended</option>
                             <option value="price,asc">Price: Low to High</option>
                             <option value="price,desc">Price: High to Low</option>
                             <option value="rating,desc">Rating: High to Low</option>
