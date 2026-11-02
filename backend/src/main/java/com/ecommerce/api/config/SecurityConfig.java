@@ -51,18 +51,15 @@ public class SecurityConfig {
                         "/api/customer/auth/login"
                 ).permitAll()
 
-                // Public catalog reads and product images
+                // Public catalog reads
                 .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
                 .requestMatchers("/images/**").permitAll()
 
-                // Category changes are restricted to administrators
-                .requestMatchers(HttpMethod.POST,
-                        "/api/categories", "/api/categories/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.PUT,
-                        "/api/categories", "/api/categories/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE,
-                        "/api/categories", "/api/categories/**").hasRole("ADMIN")
+                // Category write operations are ADMIN-only
+                .requestMatchers(HttpMethod.POST, "/api/categories", "/api/categories/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/categories", "/api/categories/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/categories", "/api/categories/**").hasRole("ADMIN")
 
                 // Admin-only product management
                 .requestMatchers(HttpMethod.POST, "/api/products/*/images").hasRole("ADMIN")
