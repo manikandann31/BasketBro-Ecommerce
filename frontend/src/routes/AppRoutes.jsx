@@ -12,6 +12,7 @@ import Checkout from "../pages/Checkout";
 import Payment from "../pages/Payment";
 import OrderConfirmation from "../pages/OrderConfirmation";
 import MyOrders from "../pages/MyOrders";
+import AdminOrders from "../pages/AdminOrders";
 import CustomerAuth from "../pages/CustomerAuth";
 import SupportCenter from "../pages/SupportCenter";
 import AdminSupport from "../pages/AdminSupport";
@@ -33,6 +34,7 @@ function AppRoutes() {
 
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+            <Route path="/admin/orders" element={<ProtectedRoute><AdminOrders /></ProtectedRoute>} />
             <Route path="/admin/products" element={<ProtectedRoute><AdminProducts /></ProtectedRoute>} />
             <Route path="/admin/products/add" element={<ProtectedRoute><AddProduct /></ProtectedRoute>} />
             <Route path="/admin/products/edit/:id" element={<ProtectedRoute><EditProduct /></ProtectedRoute>} />
