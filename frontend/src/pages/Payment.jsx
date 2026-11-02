@@ -57,7 +57,7 @@ function Payment() {
             };
             navigate(`/order-confirmation/${encodeURIComponent(order.orderId)}`, { replace: true, state: { order } });
         } catch (err) {
-            setError(err.response?.data?.message || err.response?.data?.error || "Unable to place your order. Please check stock and try again.");
+            setError(err.response?.data?.message || err.response?.data?.detail || err.response?.data?.error || "Unable to place your order. Please check stock and try again.");
             setProcessing(false);
         }
     };
