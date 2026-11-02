@@ -2,6 +2,20 @@ import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/productService";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/api";
+const API_ORIGIN = API_BASE_URL.replace(/\/api\/?$/, "");
+
+function resolveImageUrl(value) {
+    if (!value || typeof value !== "string") return null;
+    const image = value.trim();
+    if (/^(https?:)?\/\//i.test(image) || /^(data|blob):/i.test(image)) return image;
+    if (image.startsWith("/")) {
+        return image.startsWith("/images/") ? `${API_ORIGIN}${image}` : image;
+    }
+    // Backward compatibility for older rows containing only a local filename.
+    return `${API_ORIGIN}/images/${encodeURIComponent(image)}`;
+}
+
 function ProductDetails() {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
@@ -18,7 +32,7 @@ function ProductDetails() {
                 setProduct(response.data);
                 setSelectedImage(0);
             } catch (err) {
-                console.error(err);
+                console.error("Failed to load product:", err);
                 setError("Failed to load product.");
             } finally {
                 setLoading(false);
@@ -29,10 +43,11 @@ function ProductDetails() {
 
     const images = useMemo(() => {
         const uploaded = (product?.images || [])
-            .map(item => typeof item === "string" ? item : item.imageUrl)
+            .map(item => resolveImageUrl(typeof item === "string" ? item : item?.imageUrl))
             .filter(Boolean);
         if (uploaded.length) return uploaded;
-        return product?.image ? [product.image] : [];
+        const legacyImage = resolveImageUrl(product?.image);
+        return legacyImage ? [legacyImage] : [];
     }, [product]);
 
     if (loading) return <h2>Loading product...</h2>;
@@ -48,7 +63,11 @@ function ProductDetails() {
                     <div style={{ minHeight: 380, display: "flex", alignItems: "center", justifyContent: "center", background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12, padding: 20 }}>
                         {activeImage ? (
                             <img src={activeImage} alt={product.name}
-                                style={{ width: "100%", height: 340, objectFit: "contain" }} />
+                                style={{ width: "100%", height: 340, objectFit: "contain" }}
+                                onError={(event) => {
+                                    event.currentTarget.onerror = null;
+                                    event.currentTarget.src = "/product-placeholder.svg";
+                                }} />
                         ) : (
                             <div style={{ color: "#777", fontSize: 18 }}>No product image available</div>
                         )}
@@ -66,7 +85,6 @@ function ProductDetails() {
                         </div>
                     )}
                 </section>
-
                 <section>
                     <h1 style={{ marginTop: 0 }}>{product.name}</h1>
                     <p>Brand: {product.brand || "—"}</p>
