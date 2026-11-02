@@ -9,8 +9,16 @@ const api = axios.create({
 api.interceptors.request.use(
     (config) => {
         const requestPath = config.url || "";
-        const isAdminRequest = requestPath.includes("/admin/");
-        const isCustomerRequest = requestPath.startsWith("/support/") || requestPath.startsWith("/orders");
+        const method = (config.method || "get").toLowerCase();
+        const isWriteMethod = ["post", "put", "patch", "delete"].includes(method);
+
+        // Product reads are public. Product mutations are admin-only, even though
+        // their REST paths are /products/... rather than /admin/products/...
+        const isAdminRequest =
+            requestPath.includes("/admin/") ||
+            (isWriteMethod && /^\/?products(?:\/|$)/.test(requestPath));
+        const isCustomerRequest =
+            requestPath.startsWith("/support/") || requestPath.startsWith("/orders");
         const token = isAdminRequest
             ? sessionStorage.getItem("adminToken")
             : isCustomerRequest
