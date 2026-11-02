@@ -68,8 +68,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasRole("ADMIN")
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
 
-                // Customer-owned support endpoints
-                .requestMatchers("/api/support/**").hasRole("CUSTOMER")
+                // Customer-owned order and support endpoints
+                .requestMatchers("/api/orders/**", "/api/support/**").hasRole("CUSTOMER")
 
                 // All remaining endpoints require authentication
                 .anyRequest().authenticated()
