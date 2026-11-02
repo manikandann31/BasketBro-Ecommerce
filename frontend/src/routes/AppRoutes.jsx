@@ -11,6 +11,7 @@ import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
 import Payment from "../pages/Payment";
 import OrderConfirmation from "../pages/OrderConfirmation";
+import MyOrders from "../pages/MyOrders";
 import CustomerAuth from "../pages/CustomerAuth";
 import SupportCenter from "../pages/SupportCenter";
 import AdminSupport from "../pages/AdminSupport";
@@ -25,6 +26,7 @@ function AppRoutes() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
+            <Route path="/my-orders" element={<MyOrders />} />
 
             <Route path="/customer/login" element={<CustomerAuth />} />
             <Route path="/support" element={<SupportCenter />} />
