@@ -63,6 +63,7 @@ function Navbar() {
                             {profileOpen && (
                                 <div className="profile-menu">
                                     <span className="profile-menu-name">{customerName || "Customer"}</span>
+                                    <Link to="/my-orders" onClick={() => setProfileOpen(false)}>My orders</Link>
                                     <Link to="/support" onClick={() => setProfileOpen(false)}>My support requests</Link>
                                     <button type="button" onClick={signOut}>Sign out</button>
                                 </div>
