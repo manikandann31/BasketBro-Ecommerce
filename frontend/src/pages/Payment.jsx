@@ -57,7 +57,17 @@ function Payment() {
             };
             navigate(`/order-confirmation/${encodeURIComponent(order.orderId)}`, { replace: true, state: { order } });
         } catch (err) {
-            setError(err.response?.data?.message || err.response?.data?.detail || err.response?.data?.error || "Unable to place your order. Please check stock and try again.");
+            console.error("Order placement failed:", {
+                status: err.response?.status,
+                response: err.response?.data,
+                message: err.message
+            });
+            const body = err.response?.data;
+            const serverMessage = typeof body === "string" ? body : body?.detail || body?.message || body?.error;
+            const fallback = err.response?.status
+                ? `Order request failed (HTTP ${err.response.status}).`
+                : "The order service could not be reached.";
+            setError(serverMessage || fallback);
             setProcessing(false);
         }
     };
