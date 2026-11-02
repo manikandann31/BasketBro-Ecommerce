@@ -74,6 +74,16 @@ function AdminDashboard() {
                 </article>
             </div>
 
+                <article className="admin-dashboard-card">
+                    <div className="admin-dashboard-card-icon">🧾</div>
+                    <h2>Manage Orders</h2>
+                    <p>Review customer orders, payment methods, order totals and update fulfilment status.</p>
+                    <button type="button" className="admin-button admin-button-primary" onClick={() => navigate("/admin/orders")}>
+                        Manage Orders <span aria-hidden="true"> →</span>
+                    </button>
+                </article>
+            </div>
+
             <div className="admin-dashboard-notice">
                 <span aria-hidden="true">ℹ️</span>
                 <p>
