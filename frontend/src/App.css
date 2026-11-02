@@ -1752,3 +1752,91 @@ body.dark-mode .brand-eyebrow {
     color: var(--color-primary);
     font-weight: 700;
 }
+
+ 
+/* Customer profile menu */
+.navbar-profile {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.profile-avatar {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(147, 197, 253, .75);
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.profile-avatar:hover {
+    background: var(--color-primary-hover);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, .16);
+}
+
+.profile-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 220px;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+}
+
+.profile-menu-name {
+    overflow: hidden;
+    padding: 9px 10px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: .9rem;
+    font-weight: 750;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.navbar-links .profile-menu a,
+.profile-menu button {
+    display: block;
+    width: 100%;
+    padding: 9px 10px;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--color-text);
+    font: inherit;
+    font-size: .9rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+.navbar-links .profile-menu a:hover,
+.profile-menu button:hover {
+    background: var(--color-surface-raised);
+    color: var(--color-primary);
+}
+
+@media (max-width: 700px) {
+    .navbar-profile {
+        position: static;
+    }
+
+    .profile-menu {
+        top: auto;
+        right: 4%;
+    }
+}
