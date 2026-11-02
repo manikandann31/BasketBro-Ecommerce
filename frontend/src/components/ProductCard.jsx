@@ -9,11 +9,7 @@ function resolveImageUrl(value) {
     if (!value || typeof value !== "string") return "/product-placeholder.svg";
     const image = value.trim();
     if (/^(https?:)?\/\//i.test(image) || /^(data|blob):/i.test(image)) return image;
-    if (image.startsWith("/")) {
-        return image.startsWith("/images/") ? `${API_ORIGIN}${image}` : image;
-    }
-    // Legacy records store only a filename; newer production records should store
-    // the complete Cloudinary URL, which is returned unchanged above.
+    if (image.startsWith("/")) return image.startsWith("/images/") ? `${API_ORIGIN}${image}` : image;
     return `${API_ORIGIN}/images/${encodeURIComponent(image)}`;
 }
 
@@ -24,6 +20,7 @@ function ProductCard({ product }) {
         ? (typeof product.images[0] === "string" ? product.images[0] : product.images[0]?.imageUrl)
         : null;
     const imageUrl = resolveImageUrl(firstUploadedImage || product.image);
+    const stock = Number(product.quantity) || 0;
 
     const handleAddToCart = () => {
         const result = addToCart(product, 1);
@@ -31,10 +28,8 @@ function ProductCard({ product }) {
         if (result.success) setTimeout(() => setMessage(""), 2000);
     };
 
-    const stock = Number(product.quantity) || 0;
-
     return (
-        <div className="product-card">
+        <article className="product-card">
             <div className="product-image">
                 <img src={imageUrl} alt={product.name}
                     onError={(event) => {
@@ -44,18 +39,17 @@ function ProductCard({ product }) {
             </div>
             <div className="product-info">
                 <h3>{product.name}</h3>
-                <p>{product.brand}</p>
-                <p>₹{Number(product.price).toLocaleString("en-IN")}</p>
-                <p>⭐ {product.rating}</p>
-                <p>{product.category?.name}</p>
-                <p>{stock > 0 ? `In stock: ${stock}` : "Out of stock"}</p>
+                <p className="product-brand">{product.brand}</p>
+                <p className="product-price">₹{Number(product.price).toLocaleString("en-IN")}</p>
+                <p className="product-rating">⭐ {product.rating}</p>
+                <p className="product-category">{product.category?.name}</p>
                 <Link to={`/products/${product.id}`}>View Details</Link>
                 <button type="button" onClick={handleAddToCart} disabled={stock <= 0}>
-                    {stock <= 0 ? "Out of Stock" : "Add to Cart"}
+                    {stock <= 0 ? "Unavailable" : "Add to Cart"}
                 </button>
                 {message && <p role="status" aria-live="polite">{message}</p>}
             </div>
-        </div>
+        </article>
     );
 }
 
