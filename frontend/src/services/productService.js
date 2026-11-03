@@ -10,7 +10,7 @@ export const getProductById = (id) => {
 
 export const getProductsPaged = (
     page = 0,
-    size = 6,
+    size = 12,
     sort = "id,asc"
 ) => {
     return api.get("/products/paged", {
