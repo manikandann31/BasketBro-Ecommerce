@@ -1,0 +1,10 @@
+[
+  {
+    "productId": 1,
+    "files": ["dell-inspiron-15.jpg", "dell-inspiron-15-side.jpg"]
+  },
+  {
+    "productId": 2,
+    "files": ["hp-pavilion-15.jpg"]
+  }
+]
