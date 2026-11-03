@@ -18,7 +18,7 @@ function Home() {
     const [showWelcome, setShowWelcome] = useState(
         () => !localStorage.getItem("customerToken") && sessionStorage.getItem("basketbroGuest") !== "true"
     );
-    const pageSize = 6;
+    const pageSize = 12;
 
     useEffect(() => {
         const fetchCategories = async () => {
