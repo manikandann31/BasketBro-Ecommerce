@@ -30,10 +30,17 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 			WHERE
 			    (:keyword = '' OR
 			     LOWER(p.name) LIKE LOWER(CONCAT('%', :keyword, '%'))
-			     OR
-			     LOWER(p.brand) LIKE LOWER(CONCAT('%', :keyword, '%')))
-			AND
-			    (:categoryId IS NULL OR p.category.id = :categoryId)
+			     OR LOWER(p.brand) LIKE LOWER(CONCAT('%', :keyword, '%'))
+			     OR LOWER(p.category.name) LIKE LOWER(CONCAT('%', :keyword, '%'))
+			     OR (LOWER(:keyword) IN ('laptop', 'laptops', 'computer', 'computers', 'pc', 'notebook', 'notebooks')
+			         AND LOWER(p.category.name) = 'computers')
+			     OR (LOWER(:keyword) IN ('mobile', 'mobiles', 'phone', 'phones', 'smartphone', 'smartphones')
+			         AND LOWER(p.category.name) = 'mobiles')
+			     OR (LOWER(:keyword) IN ('headphone', 'headphones', 'earbuds', 'charger', 'chargers', 'keyboard', 'mouse', 'accessory', 'accessories')
+			         AND LOWER(p.category.name) = 'accessories')
+			     OR (LOWER(:keyword) IN ('appliance', 'appliances', 'kitchen', 'refrigerator', 'washing machine', 'vacuum')
+			         AND LOWER(p.category.name) = 'home appliances'))
+			AND (:categoryId IS NULL OR p.category.id = :categoryId)
 			""")
 	Page<Product> searchProducts(@Param("keyword") String keyword, @Param("categoryId") Long categoryId,
 			Pageable pageable);
