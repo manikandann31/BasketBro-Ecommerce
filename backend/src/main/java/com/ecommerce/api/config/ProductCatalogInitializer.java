@@ -29,7 +29,8 @@ public class ProductCatalogInitializer {
         return args -> {
             List<String> categoryNames = List.of(
                     "Electronics", "Computers", "Mobiles",
-                    "Accessories", "Home Appliances");
+                    "Accessories", "Home Appliances", "Fashion", "Home & Kitchen",
+                    "Books", "Sports", "Beauty");
 
             Map<String, Category> categories = categoryRepository.findAll()
                     .stream()
@@ -102,7 +103,62 @@ public class ProductCatalogInitializer {
                 new ProductSeed("Havells Room Heater", "Havells", 2499, 4.1, 22, "Home Appliances"),
                 new ProductSeed("Orient Electric Ceiling Fan", "Orient", 2299, 4.2, 28, "Home Appliances"),
                 new ProductSeed("Morphy Richards OTG 28L", "Morphy Richards", 6999, 4.3, 11, "Home Appliances"),
-                new ProductSeed("Kent 7L RO Water Purifier", "Kent", 11999, 4.2, 10, "Home Appliances")
+                new ProductSeed("Kent 7L RO Water Purifier", "Kent", 11999, 4.2, 10, "Home Appliances"),
+
+                new ProductSeed("Men's Cotton Casual Shirt", "Roadster", 1299, 4.3, 45, "Fashion"),
+                new ProductSeed("Women's Floral Print Dress", "ONLY", 2499, 4.5, 24, "Fashion"),
+                new ProductSeed("Men's Slim Fit Jeans", "Levi's", 2999, 4.4, 30, "Fashion"),
+                new ProductSeed("Women's Running Sneakers", "Puma", 3499, 4.5, 18, "Fashion"),
+                new ProductSeed("Unisex Classic Hoodie", "H&M", 1799, 4.2, 35, "Fashion"),
+                new ProductSeed("Women's Everyday Handbag", "Lavie", 1599, 4.3, 22, "Fashion"),
+                new ProductSeed("Men's Formal Leather Belt", "Woodland", 999, 4.1, 40, "Fashion"),
+                new ProductSeed("Women's Cotton Kurta", "Biba", 1399, 4.4, 28, "Fashion"),
+                new ProductSeed("Men's Sports Track Pants", "Adidas", 1999, 4.3, 26, "Fashion"),
+                new ProductSeed("Polarized Sunglasses", "Fastrack", 1299, 4.2, 32, "Fashion"),
+
+                new ProductSeed("Non-Stick Cookware Set", "Prestige", 2499, 4.4, 20, "Home & Kitchen"),
+                new ProductSeed("Stainless Steel Dinner Set", "Cello", 1899, 4.3, 25, "Home & Kitchen"),
+                new ProductSeed("Ceramic Coffee Mug Set", "Borosil", 699, 4.2, 40, "Home & Kitchen"),
+                new ProductSeed("Cotton Double Bedsheet", "Wakefit", 1499, 4.4, 18, "Home & Kitchen"),
+                new ProductSeed("LED Table Lamp", "Philips", 999, 4.3, 27, "Home & Kitchen"),
+                new ProductSeed("Insulated Water Bottle 1L", "Milton", 599, 4.5, 50, "Home & Kitchen"),
+                new ProductSeed("Wall Clock Modern Design", "Ajanta", 799, 4.1, 22, "Home & Kitchen"),
+                new ProductSeed("Kitchen Storage Container Set", "Signoraware", 899, 4.2, 30, "Home & Kitchen"),
+                new ProductSeed("Memory Foam Pillow Pair", "Sleepyhead", 1299, 4.4, 16, "Home & Kitchen"),
+                new ProductSeed("Foldable Laundry Basket", "Amazon Basics", 499, 4.0, 34, "Home & Kitchen"),
+
+                new ProductSeed("Atomic Habits", "James Clear", 499, 4.8, 40, "Books"),
+                new ProductSeed("The Psychology of Money", "Morgan Housel", 399, 4.7, 35, "Books"),
+                new ProductSeed("Ikigai", "Héctor García", 299, 4.5, 42, "Books"),
+                new ProductSeed("Rich Dad Poor Dad", "Robert Kiyosaki", 349, 4.6, 30, "Books"),
+                new ProductSeed("The Alchemist", "Paulo Coelho", 299, 4.6, 28, "Books"),
+                new ProductSeed("Deep Work", "Cal Newport", 449, 4.5, 21, "Books"),
+                new ProductSeed("Clean Code", "Robert C. Martin", 699, 4.7, 15, "Books"),
+                new ProductSeed("Head First Java", "Kathy Sierra", 799, 4.6, 18, "Books"),
+                new ProductSeed("The Hobbit", "J.R.R. Tolkien", 399, 4.7, 20, "Books"),
+                new ProductSeed("Wings of Fire", "A.P.J. Abdul Kalam", 250, 4.8, 38, "Books"),
+
+                new ProductSeed("Adjustable Dumbbell Pair", "Amazon Basics", 4999, 4.4, 12, "Sports"),
+                new ProductSeed("Yoga Mat 6mm", "Boldfit", 799, 4.5, 35, "Sports"),
+                new ProductSeed("Professional Cricket Bat", "SG", 2499, 4.3, 14, "Sports"),
+                new ProductSeed("Football Size 5", "Nivia", 899, 4.2, 24, "Sports"),
+                new ProductSeed("Badminton Racket Pair", "Yonex", 1999, 4.5, 16, "Sports"),
+                new ProductSeed("Treadmill Foldable", "Fitkit", 18999, 4.3, 6, "Sports"),
+                new ProductSeed("Stainless Steel Gym Shaker", "Puma", 499, 4.1, 40, "Sports"),
+                new ProductSeed("Resistance Bands Set", "Boldfit", 599, 4.4, 30, "Sports"),
+                new ProductSeed("Cycling Helmet", "Decathlon", 1299, 4.5, 18, "Sports"),
+                new ProductSeed("Table Tennis Racket Set", "Stag", 999, 4.2, 20, "Sports"),
+
+                new ProductSeed("Vitamin C Face Serum", "Minimalist", 599, 4.4, 32, "Beauty"),
+                new ProductSeed("Hydrating Face Moisturizer", "Cetaphil", 499, 4.5, 28, "Beauty"),
+                new ProductSeed("Matte Lipstick", "Maybelline", 399, 4.3, 40, "Beauty"),
+                new ProductSeed("Waterproof Mascara", "Lakme", 349, 4.2, 25, "Beauty"),
+                new ProductSeed("SPF 50 Sunscreen", "Neutrogena", 699, 4.5, 30, "Beauty"),
+                new ProductSeed("Gentle Foaming Face Wash", "Simple", 399, 4.4, 36, "Beauty"),
+                new ProductSeed("Nourishing Hair Serum", "L'Oreal", 499, 4.3, 22, "Beauty"),
+                new ProductSeed("Rose Body Lotion", "Nivea", 299, 4.2, 40, "Beauty"),
+                new ProductSeed("Makeup Brush Set", "Faces Canada", 799, 4.1, 18, "Beauty"),
+                new ProductSeed("Aloe Vera Gel", "Plum", 275, 4.3, 34, "Beauty")
             );
 
             Map<String, Product> existing = productRepository.findAll()
