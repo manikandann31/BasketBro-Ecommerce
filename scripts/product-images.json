@@ -1,0 +1,802 @@
+[
+  {
+    "productName": "Dell Inspiron 15",
+    "brand": "Dell",
+    "category": "Computers",
+    "files": [
+      "dell-inspiron-15.jpg"
+    ]
+  },
+  {
+    "productName": "HP Pavilion 15",
+    "brand": "HP",
+    "category": "Computers",
+    "files": [
+      "hp-pavilion-15.jpg"
+    ]
+  },
+  {
+    "productName": "Lenovo IdeaPad Slim 5",
+    "brand": "Lenovo",
+    "category": "Computers",
+    "files": [
+      "lenovo-ideapad-slim-5.jpg"
+    ]
+  },
+  {
+    "productName": "ASUS VivoBook 15",
+    "brand": "ASUS",
+    "category": "Computers",
+    "files": [
+      "asus-vivobook-15.jpg"
+    ]
+  },
+  {
+    "productName": "Acer Aspire 7",
+    "brand": "Acer",
+    "category": "Computers",
+    "files": [
+      "acer-aspire-7.jpg"
+    ]
+  },
+  {
+    "productName": "Apple MacBook Air M2",
+    "brand": "Apple",
+    "category": "Computers",
+    "files": [
+      "apple-macbook-air-m2.jpg"
+    ]
+  },
+  {
+    "productName": "Lenovo ThinkPad E14",
+    "brand": "Lenovo",
+    "category": "Computers",
+    "files": [
+      "lenovo-thinkpad-e14.jpg"
+    ]
+  },
+  {
+    "productName": "HP 15s Laptop",
+    "brand": "HP",
+    "category": "Computers",
+    "files": [
+      "hp-15s-laptop.jpg"
+    ]
+  },
+  {
+    "productName": "ASUS TUF Gaming F15",
+    "brand": "ASUS",
+    "category": "Computers",
+    "files": [
+      "asus-tuf-gaming-f15.jpg"
+    ]
+  },
+  {
+    "productName": "Acer Nitro V Gaming",
+    "brand": "Acer",
+    "category": "Computers",
+    "files": [
+      "acer-nitro-v-gaming.jpg"
+    ]
+  },
+  {
+    "productName": "Samsung Galaxy S24 FE",
+    "brand": "Samsung",
+    "category": "Mobiles",
+    "files": [
+      "samsung-galaxy-s24-fe.jpg"
+    ]
+  },
+  {
+    "productName": "Apple iPhone 15",
+    "brand": "Apple",
+    "category": "Mobiles",
+    "files": [
+      "apple-iphone-15.jpg"
+    ]
+  },
+  {
+    "productName": "OnePlus 12R",
+    "brand": "OnePlus",
+    "category": "Mobiles",
+    "files": [
+      "oneplus-12r.jpg"
+    ]
+  },
+  {
+    "productName": "Google Pixel 8a",
+    "brand": "Google",
+    "category": "Mobiles",
+    "files": [
+      "google-pixel-8a.jpg"
+    ]
+  },
+  {
+    "productName": "Nothing Phone 2a",
+    "brand": "Nothing",
+    "category": "Mobiles",
+    "files": [
+      "nothing-phone-2a.jpg"
+    ]
+  },
+  {
+    "productName": "Redmi Note 13 Pro",
+    "brand": "Xiaomi",
+    "category": "Mobiles",
+    "files": [
+      "redmi-note-13-pro.jpg"
+    ]
+  },
+  {
+    "productName": "Samsung Galaxy A35",
+    "brand": "Samsung",
+    "category": "Mobiles",
+    "files": [
+      "samsung-galaxy-a35.jpg"
+    ]
+  },
+  {
+    "productName": "Motorola Edge 50 Fusion",
+    "brand": "Motorola",
+    "category": "Mobiles",
+    "files": [
+      "motorola-edge-50-fusion.jpg"
+    ]
+  },
+  {
+    "productName": "iPhone 14",
+    "brand": "Apple",
+    "category": "Mobiles",
+    "files": [
+      "iphone-14.jpg"
+    ]
+  },
+  {
+    "productName": "OnePlus Nord CE4",
+    "brand": "OnePlus",
+    "category": "Mobiles",
+    "files": [
+      "oneplus-nord-ce4.jpg"
+    ]
+  },
+  {
+    "productName": "Sony WH-1000XM5 Headphones",
+    "brand": "Sony",
+    "category": "Accessories",
+    "files": [
+      "sony-wh-1000xm5-headphones.jpg"
+    ]
+  },
+  {
+    "productName": "JBL Tune 770NC",
+    "brand": "JBL",
+    "category": "Accessories",
+    "files": [
+      "jbl-tune-770nc.jpg"
+    ]
+  },
+  {
+    "productName": "boAt Airdopes 141",
+    "brand": "boAt",
+    "category": "Accessories",
+    "files": [
+      "boat-airdopes-141.jpg"
+    ]
+  },
+  {
+    "productName": "Apple AirPods Pro 2",
+    "brand": "Apple",
+    "category": "Accessories",
+    "files": [
+      "apple-airpods-pro-2.jpg"
+    ]
+  },
+  {
+    "productName": "Logitech MX Master 3S",
+    "brand": "Logitech",
+    "category": "Accessories",
+    "files": [
+      "logitech-mx-master-3s.jpg"
+    ]
+  },
+  {
+    "productName": "Logitech K380 Keyboard",
+    "brand": "Logitech",
+    "category": "Accessories",
+    "files": [
+      "logitech-k380-keyboard.jpg"
+    ]
+  },
+  {
+    "productName": "Samsung 25W USB-C Charger",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "files": [
+      "samsung-25w-usb-c-charger.jpg"
+    ]
+  },
+  {
+    "productName": "Anker PowerCore 20000",
+    "brand": "Anker",
+    "category": "Accessories",
+    "files": [
+      "anker-powercore-20000.jpg"
+    ]
+  },
+  {
+    "productName": "SanDisk Ultra 128GB USB Drive",
+    "brand": "SanDisk",
+    "category": "Accessories",
+    "files": [
+      "sandisk-ultra-128gb-usb-drive.jpg"
+    ]
+  },
+  {
+    "productName": "TP-Link Archer AX23 Router",
+    "brand": "TP-Link",
+    "category": "Accessories",
+    "files": [
+      "tp-link-archer-ax23-router.jpg"
+    ]
+  },
+  {
+    "productName": "Samsung 43-inch 4K Smart TV",
+    "brand": "Samsung",
+    "category": "Electronics",
+    "files": [
+      "samsung-43-inch-4k-smart-tv.jpg"
+    ]
+  },
+  {
+    "productName": "LG 55-inch 4K UHD TV",
+    "brand": "LG",
+    "category": "Electronics",
+    "files": [
+      "lg-55-inch-4k-uhd-tv.jpg"
+    ]
+  },
+  {
+    "productName": "Sony Bravia 50-inch 4K TV",
+    "brand": "Sony",
+    "category": "Electronics",
+    "files": [
+      "sony-bravia-50-inch-4k-tv.jpg"
+    ]
+  },
+  {
+    "productName": "Xiaomi 32-inch Smart TV",
+    "brand": "Xiaomi",
+    "category": "Electronics",
+    "files": [
+      "xiaomi-32-inch-smart-tv.jpg"
+    ]
+  },
+  {
+    "productName": "Amazon Fire TV Stick 4K",
+    "brand": "Amazon",
+    "category": "Electronics",
+    "files": [
+      "amazon-fire-tv-stick-4k.jpg"
+    ]
+  },
+  {
+    "productName": "Canon EOS 1500D DSLR",
+    "brand": "Canon",
+    "category": "Electronics",
+    "files": [
+      "canon-eos-1500d-dslr.jpg"
+    ]
+  },
+  {
+    "productName": "GoPro HERO12 Black",
+    "brand": "GoPro",
+    "category": "Electronics",
+    "files": [
+      "gopro-hero12-black.jpg"
+    ]
+  },
+  {
+    "productName": "Epson EcoTank L3250 Printer",
+    "brand": "Epson",
+    "category": "Electronics",
+    "files": [
+      "epson-ecotank-l3250-printer.jpg"
+    ]
+  },
+  {
+    "productName": "Portronics Beem 430 Projector",
+    "brand": "Portronics",
+    "category": "Electronics",
+    "files": [
+      "portronics-beem-430-projector.jpg"
+    ]
+  },
+  {
+    "productName": "BenQ GW2790 Monitor",
+    "brand": "BenQ",
+    "category": "Electronics",
+    "files": [
+      "benq-gw2790-monitor.jpg"
+    ]
+  },
+  {
+    "productName": "Philips Air Fryer 4.1L",
+    "brand": "Philips",
+    "category": "Home Appliances",
+    "files": [
+      "philips-air-fryer-4-1l.jpg"
+    ]
+  },
+  {
+    "productName": "Prestige 1.5L Electric Kettle",
+    "brand": "Prestige",
+    "category": "Home Appliances",
+    "files": [
+      "prestige-1-5l-electric-kettle.jpg"
+    ]
+  },
+  {
+    "productName": "Bajaj 750W Mixer Grinder",
+    "brand": "Bajaj",
+    "category": "Home Appliances",
+    "files": [
+      "bajaj-750w-mixer-grinder.jpg"
+    ]
+  },
+  {
+    "productName": "LG Frost-Free Double Door Refrigerator",
+    "brand": "LG",
+    "category": "Home Appliances",
+    "files": [
+      "lg-frost-free-double-door-refrigerator.jpg"
+    ]
+  },
+  {
+    "productName": "Whirlpool 7kg Washing Machine",
+    "brand": "Whirlpool",
+    "category": "Home Appliances",
+    "files": [
+      "whirlpool-7kg-washing-machine.jpg"
+    ]
+  },
+  {
+    "productName": "Dyson V8 Cordless Vacuum",
+    "brand": "Dyson",
+    "category": "Home Appliances",
+    "files": [
+      "dyson-v8-cordless-vacuum.jpg"
+    ]
+  },
+  {
+    "productName": "Havells Room Heater",
+    "brand": "Havells",
+    "category": "Home Appliances",
+    "files": [
+      "havells-room-heater.jpg"
+    ]
+  },
+  {
+    "productName": "Orient Electric Ceiling Fan",
+    "brand": "Orient",
+    "category": "Home Appliances",
+    "files": [
+      "orient-electric-ceiling-fan.jpg"
+    ]
+  },
+  {
+    "productName": "Morphy Richards OTG 28L",
+    "brand": "Morphy Richards",
+    "category": "Home Appliances",
+    "files": [
+      "morphy-richards-otg-28l.jpg"
+    ]
+  },
+  {
+    "productName": "Kent 7L RO Water Purifier",
+    "brand": "Kent",
+    "category": "Home Appliances",
+    "files": [
+      "kent-7l-ro-water-purifier.jpg"
+    ]
+  },
+  {
+    "productName": "Men's Cotton Casual Shirt",
+    "brand": "Roadster",
+    "category": "Fashion",
+    "files": [
+      "men-s-cotton-casual-shirt.jpg"
+    ]
+  },
+  {
+    "productName": "Women's Floral Print Dress",
+    "brand": "ONLY",
+    "category": "Fashion",
+    "files": [
+      "women-s-floral-print-dress.jpg"
+    ]
+  },
+  {
+    "productName": "Men's Slim Fit Jeans",
+    "brand": "Levi's",
+    "category": "Fashion",
+    "files": [
+      "men-s-slim-fit-jeans.jpg"
+    ]
+  },
+  {
+    "productName": "Women's Running Sneakers",
+    "brand": "Puma",
+    "category": "Fashion",
+    "files": [
+      "women-s-running-sneakers.jpg"
+    ]
+  },
+  {
+    "productName": "Unisex Classic Hoodie",
+    "brand": "H&M",
+    "category": "Fashion",
+    "files": [
+      "unisex-classic-hoodie.jpg"
+    ]
+  },
+  {
+    "productName": "Women's Everyday Handbag",
+    "brand": "Lavie",
+    "category": "Fashion",
+    "files": [
+      "women-s-everyday-handbag.jpg"
+    ]
+  },
+  {
+    "productName": "Men's Formal Leather Belt",
+    "brand": "Woodland",
+    "category": "Fashion",
+    "files": [
+      "men-s-formal-leather-belt.jpg"
+    ]
+  },
+  {
+    "productName": "Women's Cotton Kurta",
+    "brand": "Biba",
+    "category": "Fashion",
+    "files": [
+      "women-s-cotton-kurta.jpg"
+    ]
+  },
+  {
+    "productName": "Men's Sports Track Pants",
+    "brand": "Adidas",
+    "category": "Fashion",
+    "files": [
+      "men-s-sports-track-pants.jpg"
+    ]
+  },
+  {
+    "productName": "Polarized Sunglasses",
+    "brand": "Fastrack",
+    "category": "Fashion",
+    "files": [
+      "polarized-sunglasses.jpg"
+    ]
+  },
+  {
+    "productName": "Non-Stick Cookware Set",
+    "brand": "Prestige",
+    "category": "Home & Kitchen",
+    "files": [
+      "non-stick-cookware-set.jpg"
+    ]
+  },
+  {
+    "productName": "Stainless Steel Dinner Set",
+    "brand": "Cello",
+    "category": "Home & Kitchen",
+    "files": [
+      "stainless-steel-dinner-set.jpg"
+    ]
+  },
+  {
+    "productName": "Ceramic Coffee Mug Set",
+    "brand": "Borosil",
+    "category": "Home & Kitchen",
+    "files": [
+      "ceramic-coffee-mug-set.jpg"
+    ]
+  },
+  {
+    "productName": "Cotton Double Bedsheet",
+    "brand": "Wakefit",
+    "category": "Home & Kitchen",
+    "files": [
+      "cotton-double-bedsheet.jpg"
+    ]
+  },
+  {
+    "productName": "LED Table Lamp",
+    "brand": "Philips",
+    "category": "Home & Kitchen",
+    "files": [
+      "led-table-lamp.jpg"
+    ]
+  },
+  {
+    "productName": "Insulated Water Bottle 1L",
+    "brand": "Milton",
+    "category": "Home & Kitchen",
+    "files": [
+      "insulated-water-bottle-1l.jpg"
+    ]
+  },
+  {
+    "productName": "Wall Clock Modern Design",
+    "brand": "Ajanta",
+    "category": "Home & Kitchen",
+    "files": [
+      "wall-clock-modern-design.jpg"
+    ]
+  },
+  {
+    "productName": "Kitchen Storage Container Set",
+    "brand": "Signoraware",
+    "category": "Home & Kitchen",
+    "files": [
+      "kitchen-storage-container-set.jpg"
+    ]
+  },
+  {
+    "productName": "Memory Foam Pillow Pair",
+    "brand": "Sleepyhead",
+    "category": "Home & Kitchen",
+    "files": [
+      "memory-foam-pillow-pair.jpg"
+    ]
+  },
+  {
+    "productName": "Foldable Laundry Basket",
+    "brand": "Amazon Basics",
+    "category": "Home & Kitchen",
+    "files": [
+      "foldable-laundry-basket.jpg"
+    ]
+  },
+  {
+    "productName": "Atomic Habits",
+    "brand": "James Clear",
+    "category": "Books",
+    "files": [
+      "atomic-habits.jpg"
+    ]
+  },
+  {
+    "productName": "The Psychology of Money",
+    "brand": "Morgan Housel",
+    "category": "Books",
+    "files": [
+      "the-psychology-of-money.jpg"
+    ]
+  },
+  {
+    "productName": "Ikigai",
+    "brand": "Héctor García",
+    "category": "Books",
+    "files": [
+      "ikigai.jpg"
+    ]
+  },
+  {
+    "productName": "Rich Dad Poor Dad",
+    "brand": "Robert Kiyosaki",
+    "category": "Books",
+    "files": [
+      "rich-dad-poor-dad.jpg"
+    ]
+  },
+  {
+    "productName": "The Alchemist",
+    "brand": "Paulo Coelho",
+    "category": "Books",
+    "files": [
+      "the-alchemist.jpg"
+    ]
+  },
+  {
+    "productName": "Deep Work",
+    "brand": "Cal Newport",
+    "category": "Books",
+    "files": [
+      "deep-work.jpg"
+    ]
+  },
+  {
+    "productName": "Clean Code",
+    "brand": "Robert C. Martin",
+    "category": "Books",
+    "files": [
+      "clean-code.jpg"
+    ]
+  },
+  {
+    "productName": "Head First Java",
+    "brand": "Kathy Sierra",
+    "category": "Books",
+    "files": [
+      "head-first-java.jpg"
+    ]
+  },
+  {
+    "productName": "The Hobbit",
+    "brand": "J.R.R. Tolkien",
+    "category": "Books",
+    "files": [
+      "the-hobbit.jpg"
+    ]
+  },
+  {
+    "productName": "Wings of Fire",
+    "brand": "A.P.J. Abdul Kalam",
+    "category": "Books",
+    "files": [
+      "wings-of-fire.jpg"
+    ]
+  },
+  {
+    "productName": "Adjustable Dumbbell Pair",
+    "brand": "Amazon Basics",
+    "category": "Sports",
+    "files": [
+      "adjustable-dumbbell-pair.jpg"
+    ]
+  },
+  {
+    "productName": "Yoga Mat 6mm",
+    "brand": "Boldfit",
+    "category": "Sports",
+    "files": [
+      "yoga-mat-6mm.jpg"
+    ]
+  },
+  {
+    "productName": "Professional Cricket Bat",
+    "brand": "SG",
+    "category": "Sports",
+    "files": [
+      "professional-cricket-bat.jpg"
+    ]
+  },
+  {
+    "productName": "Football Size 5",
+    "brand": "Nivia",
+    "category": "Sports",
+    "files": [
+      "football-size-5.jpg"
+    ]
+  },
+  {
+    "productName": "Badminton Racket Pair",
+    "brand": "Yonex",
+    "category": "Sports",
+    "files": [
+      "badminton-racket-pair.jpg"
+    ]
+  },
+  {
+    "productName": "Treadmill Foldable",
+    "brand": "Fitkit",
+    "category": "Sports",
+    "files": [
+      "treadmill-foldable.jpg"
+    ]
+  },
+  {
+    "productName": "Stainless Steel Gym Shaker",
+    "brand": "Puma",
+    "category": "Sports",
+    "files": [
+      "stainless-steel-gym-shaker.jpg"
+    ]
+  },
+  {
+    "productName": "Resistance Bands Set",
+    "brand": "Boldfit",
+    "category": "Sports",
+    "files": [
+      "resistance-bands-set.jpg"
+    ]
+  },
+  {
+    "productName": "Cycling Helmet",
+    "brand": "Decathlon",
+    "category": "Sports",
+    "files": [
+      "cycling-helmet.jpg"
+    ]
+  },
+  {
+    "productName": "Table Tennis Racket Set",
+    "brand": "Stag",
+    "category": "Sports",
+    "files": [
+      "table-tennis-racket-set.jpg"
+    ]
+  },
+  {
+    "productName": "Vitamin C Face Serum",
+    "brand": "Minimalist",
+    "category": "Beauty",
+    "files": [
+      "vitamin-c-face-serum.jpg"
+    ]
+  },
+  {
+    "productName": "Hydrating Face Moisturizer",
+    "brand": "Cetaphil",
+    "category": "Beauty",
+    "files": [
+      "hydrating-face-moisturizer.jpg"
+    ]
+  },
+  {
+    "productName": "Matte Lipstick",
+    "brand": "Maybelline",
+    "category": "Beauty",
+    "files": [
+      "matte-lipstick.jpg"
+    ]
+  },
+  {
+    "productName": "Waterproof Mascara",
+    "brand": "Lakme",
+    "category": "Beauty",
+    "files": [
+      "waterproof-mascara.jpg"
+    ]
+  },
+  {
+    "productName": "SPF 50 Sunscreen",
+    "brand": "Neutrogena",
+    "category": "Beauty",
+    "files": [
+      "spf-50-sunscreen.jpg"
+    ]
+  },
+  {
+    "productName": "Gentle Foaming Face Wash",
+    "brand": "Simple",
+    "category": "Beauty",
+    "files": [
+      "gentle-foaming-face-wash.jpg"
+    ]
+  },
+  {
+    "productName": "Nourishing Hair Serum",
+    "brand": "L'Oreal",
+    "category": "Beauty",
+    "files": [
+      "nourishing-hair-serum.jpg"
+    ]
+  },
+  {
+    "productName": "Rose Body Lotion",
+    "brand": "Nivea",
+    "category": "Beauty",
+    "files": [
+      "rose-body-lotion.jpg"
+    ]
+  },
+  {
+    "productName": "Makeup Brush Set",
+    "brand": "Faces Canada",
+    "category": "Beauty",
+    "files": [
+      "makeup-brush-set.jpg"
+    ]
+  },
+  {
+    "productName": "Aloe Vera Gel",
+    "brand": "Plum",
+    "category": "Beauty",
+    "files": [
+      "aloe-vera-gel.jpg"
+    ]
+  }
+]
