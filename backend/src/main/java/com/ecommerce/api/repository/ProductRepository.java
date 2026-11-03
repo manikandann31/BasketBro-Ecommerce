@@ -40,11 +40,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 	// Retrieve a product while acquiring a database write lock.
 	// The calling service must execute this method inside a transaction.
-	@Query("""
-			SELECT p FROM Product p
-			WHERE p.id = :productId
-			""")
-	@org.springframework.data.jpa.repository.Lock(jakarta.persistence.LockModeType.PESSIMISTIC_WRITE)
+	@Query(value = "SELECT * FROM products WHERE id = :productId FOR UPDATE", nativeQuery = true)
 	Optional<Product> findByIdForInventoryUpdate(@Param("productId") Integer productId);
 
 	// Atomically decrement inventory only when sufficient stock exists.
